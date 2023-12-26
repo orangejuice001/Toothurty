@@ -1,0 +1,86 @@
+{
+    "23567": {
+        "name": "Dr. John Doe",
+        "speciality": "Orthodontist",
+        "email": "john.doe@example.com",
+        "phone": "+1 123-456-7890",
+        "address": "123 Main Street, Cityville, State"
+    },
+    "25564": {
+        "name": "Dr. Jane Smith",
+        "speciality": "Pedodontist",
+        "email": "jane.smith@example.com",
+        "phone": "+1 987-654-3210",
+        "address": "456 Oak Avenue, Townsville, State"
+    },
+    "27894": {
+        "name": "Dr. Robert Johnson",
+        "speciality": "Periodontist",
+        "email": "robert.johnson@example.com",
+        "phone": "+1 234-567-8901",
+        "address": "789 Pine Street, Villagetown, State"
+    },
+    "25674": {
+        "name": "Dr. Emily Brown",
+        "speciality": "Prosthodontist",
+        "email": "emily.brown@example.com",
+        "phone": "+1 345-678-9012",
+        "address": "012 Cedar Avenue, Hamletville, State"
+    },
+    "26583": {
+        "name": "Dr. Michael Davis",
+        "speciality": "Endodontist",
+        "email": "michael.davis@example.com",
+        "phone": "+1 456-789-0123",
+        "address": "345 Maple Street, Riverside, State"
+    },
+    "21453": {
+        "name": "Dr. Sarah Wilson",
+        "speciality": "Oral and Maxillofacial Surgeon",
+        "email": "sarah.wilson@example.com",
+        "phone": "+1 567-890-1234",
+        "address": "678 Elm Avenue, Lakeside, State"
+    },
+    "28193": {
+        "name": "Dr. William Taylor",
+        "speciality": "Dental Public Health Specialist",
+        "email": "william.taylor@example.com",
+        "phone": "+1 678-901-2345",
+        "address": "901 Birch Street, Mountainside, State"
+    },
+    "25671": {
+        "name": "Dr. Olivia White",
+        "speciality": "Pediatric Dentist",
+        "email": "olivia.white@example.com",
+        "phone": "+1 789-012-3456",
+        "address": "234 Spruce Avenue, Hilltop, State"
+    },
+    "25404": {
+        "name": "Dr. Benjamin Clark",
+        "speciality": "Prosthodontist",
+        "email": "benjamin.clark@example.com",
+        "phone": "+1 890-123-4567",
+        "address": "567 Fir Street, Lakeshore, State"
+    },
+    "28503": {
+        "name": "Dr. Ava Martinez",
+        "speciality": "Orthodontist",
+        "email": "ava.martinez@example.com",
+        "phone": "+1 012-345-6789",
+        "address": "890 Oak Avenue, Seaside, State"
+    },
+    "28493": {
+        "name": "Dr. Ethan Adams",
+        "speciality": "Oral Pathologist",
+        "email": "ethan.adams@example.com",
+        "phone": "+1 123-456-7890",
+        "address": "345 Cedar Street, Countryside, State"
+    },
+    "29531": {
+        "name": "Dr. Mia Turner",
+        "speciality": "Pedodontist",
+        "email": "mia.turner@example.com",
+        "phone": "+1 234-567-8901",
+        "address": "678 Pine Avenue, Suburbia, State"
+    }
+}
