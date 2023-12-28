@@ -24,4 +24,8 @@ function switchToAppointments() {
     navbarLinks[1].classList.add("active")
 }
 
+function showDoctorForm(){
+    document.getElementById("docFormContainer").style.display = 'block';
+}
+
 // TODO: create CRUD api calls to your api
