@@ -1,1 +1,10 @@
 /* TODO: add font */
+/* Background Image */
+body{
+    /* background-image: url('img/dentbg.jpg'); */
+}
+
+#calendar{
+    text-align: center; /* This makes all text in the calendar center aligned */
+    table-layout: fixed; /* This forces all columns to have equal widths based on the width of the first row. */
+}

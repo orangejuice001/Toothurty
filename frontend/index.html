@@ -18,21 +18,20 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand bg-dark" data-bs-theme="dark">
+    <nav class="navbar navbar-expand bg-secondary" data-bs-theme="bg-secondary">
         <div class="container">
             <!-- Logo -->
             <a href="" class="navbar-brand fw-bold">
-                <span class="material-symbols-outlined">dentistry</span>
-                TootHurty
+                <span class="material-symbols-outlined">dentistry</span> TootHurty
             </a>
 
             <!-- Links -->
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <span onclick="switchToDoctors()" class="nav-link active">Doctors</span>
+                    <span onclick="switchToDoctors()" class="nav-link">Doctors</span>
                 </li>
                 <li class="nav-item">
-                    <span onclick="switchToAppointments()" class="nav-link">Appointments</span>
+                    <span onclick="switchToAppointments()" class="nav-link active">Appointments</span>
                 </li>
             </ul>
         </div>
@@ -40,7 +39,9 @@
 
     <div class="container mt-5">
         <div id="doctors-container">
-            <table class="table table-striped table-bordered">
+            <!-- TODO: search bar -->
+
+            <table class="table table-striped table-bordered" id="doctors-table">
                 <thead>
                     <tr>
                         <th scope="col">Name</th>
@@ -51,7 +52,7 @@
                         <th scope="col">Actions</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="doctors-table-body">
                     <tr>
                         <td>Dr. Olivia White</td>
                         <td>Pediatric Dentist</td>
@@ -61,6 +62,7 @@
                         <td>
                             <div>
                                 <button class="btn btn-outline-warning btn-sm" type="button">
+                                    <!-- TODO: Add edit icon -->
                                     Edit
                                 </button>
                             </div>
@@ -85,37 +87,55 @@
 
             <!-- Add Doctor Button -->
             <div class="text-center">
-                <button class="btn btn-primary" onclick="showDoctorForm()">Add new doctor</button>
+                <button class="btn btn-primary" onclick="showDoctorForm()">
+                    <!-- TODO: Add + icon instead of add -->
+                    Add new doctor
+                </button>
             </div>
 
             <!-- Doctor Form -->
-            <div class="card mt-5 mb-5" id="docFormContainer" style="display: none;">
+            <div class="card mt-5 mb-5" id="docFormContainer" style="display: none">
                 <div class="card-body">
                     <form id="docForm">
                         <div class="row mb-3">
                             <div class="col">
                                 <label for="Name" class="form-label">Doctor Name</label>
-                                <input type="text" class="form-control" id="nameField">
+                                <input type="text" class="form-control" id="nameField" />
                             </div>
                             <div class="col">
-                                <!-- TODO: make this a select instead -->
                                 <label for="Speciality" class="form-label">Speciality</label>
-                                <input type="text" class="form-control" id="specField">
+                                <select class="form-select">
+                                    <option selected value="0">Select a speciality...</option>
+                                    <option value="Orthodontist">Orthodontist</option>
+                                    <option value="Pedodontist">Pedodontist</option>
+                                    <option value="Periodontist">Periodontist</option>
+                                    <option value="Prosthodontist">Prosthodontist</option>
+                                    <option value="Endodontist">Endodontist</option>
+                                    <option value="Oral and Maxillofacial Surgeon">
+                                        Oral and Maxillofacial Surgeon
+                                    </option>
+                                    <option value="Dental Public Health Specialist">
+                                        Dental Public Health Specialist
+                                    </option>
+                                    <option value="Oral Pathologist">Oral Pathologist</option>
+                                    <option value="General Dentist">General Dentist</option>
+                                    <option value="Other">Other</option>
+                                </select>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <div class="col">
                                 <label for="Email" class="form-label">Email Address</label>
-                                <input type="email" class="form-control" id="emailField">
+                                <input type="email" class="form-control" id="emailField" />
                             </div>
                             <div class="col">
                                 <label for="Phone" class="form-label">Phone Number</label>
-                                <input type="tel" class="form-control" id="phonenoField">
+                                <input type="tel" class="form-control" id="phonenoField" />
                             </div>
                         </div>
                         <div class="mb-3">
                             <label for="Address" class="form-label">Address</label>
-                            <input type="text" class="form-control" id="addField">
+                            <input type="text" class="form-control" id="addField" />
                         </div>
                         <div class="text-center">
                             <button type="submit" class="btn btn-success">Submit</button>
@@ -125,10 +145,93 @@
                 </div>
             </div>
         </div>
-        <div id="appointments-container"></div>
-    </div>
 
-    <!-- TODO: Appointment Form -->
+        <div id="appointments-container">
+
+            <!-- TODO: table 7x5 -->
+            <div class="w-25">
+                <select name="month" id="monthList" class="form-select">
+                    <option value="1" selected>January</option>
+                    <option value="2">February</option>
+                    <option value="3">March</option>
+                    <option value="4">April</option>
+                    <option value="5">May</option>
+                    <option value="6">June</option>
+                    <option value="7">July</option>
+                    <option value="8">August</option>
+                    <option value="9">September</option>
+                    <option value="10">October</option>
+                    <option value="11">November</option>
+                    <option value="12">December</option>
+                </select>
+            </div>
+
+
+            <table class="table table-bordered" id="calendar">
+                <thead>
+                    <tr>
+                        <!-- TODO: make a diff color -->
+                        <th scope="col">Sunday</th>
+                        <th scope="col">Monday</th>
+                        <th scope="col">Tuesday</th>
+                        <th scope="col">Wednesday</th>
+                        <th scope="col">Thursday</th>
+                        <th scope="col">Friday</th>
+                        <th scope="col">Saturday</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>4</td>
+                        <td>5</td>
+                        <td>6</td>
+                        <td>7</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>9</td>
+                        <td>10</td>
+                        <td>11</td>
+                        <td>12</td>
+                        <td>13</td>
+                        <td>14</td>
+                    </tr>
+                    <tr>
+                        <td>15</td>
+                        <td>16</td>
+                        <td>17</td>
+                        <td>18</td>
+                        <td>19</td>
+                        <td>20</td>
+                        <td>21</td>
+                    </tr>
+                    <tr>
+                        <td>22</td>
+                        <td>23</td>
+                        <td>24</td>
+                        <td>25</td>
+                        <td>26</td>
+                        <td>27</td>
+                        <td>28</td>
+                    </tr>
+                    <tr>
+                        <td>29</td>
+                        <td>30</td>
+                        <td>31</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- TODO: Appointment Form -->
+        </div>
+    </div>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
@@ -136,7 +239,8 @@
         crossorigin="anonymous"></script>
 
     <!-- JS -->
-    <script src="app.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/app.js"></script>
 </body>
 
 </html>
