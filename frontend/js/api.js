@@ -18,12 +18,15 @@ async function getDoctors(doctorsTable) {
                     row.appendChild(td);
                 }
             }
-
+            const editTd = document.createElement("td");
+            const editDiv = document.createElement('div');
             const editButton = document.createElement('button');
-            editButton.innerHTML = "Edit";
             editButton.classList = ["btn", "btn-outline-warning", "btn-sm"];
+            editButton.innerHTML = "Edit";
+            editDiv.appendChild(editButton);
+            editTd.appendChild(editDiv)
 
-            row.appendChild(editButton)
+            row.appendChild(editTd)
 
             doctorsTable.appendChild(row);
         }

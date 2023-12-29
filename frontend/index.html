@@ -28,10 +28,10 @@
             <!-- Links -->
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <span onclick="switchToDoctors()" class="nav-link">Doctors</span>
+                    <span onclick="switchToDoctors()" class="nav-link active">Doctors</span>
                 </li>
                 <li class="nav-item">
-                    <span onclick="switchToAppointments()" class="nav-link active">Appointments</span>
+                    <span onclick="switchToAppointments()" class="nav-link">Appointments</span>
                 </li>
             </ul>
         </div>
@@ -39,9 +39,34 @@
 
     <div class="container mt-5">
         <div id="doctors-container">
-            <!-- TODO: search bar -->
+            <!-- TODO: Search Dropdown -->
+            <div class="dropdown mb-3">
+                <button class="btn btn-primary dropdown-toggle" type="button" id="searchButton"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    Search For a Doctor
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="searchButton">
+                    <li><button class="btn btn-secondary dropdown-item" onclick="searchByID()">With DoctorID</button>
+                    </li>
+                    <li><button class="btn btn-secondary dropdown-item" onclick="generalSearch()">With Text</button>
+                    </li>
+                </ul>
+            </div>
 
-            <table class="table table-striped table-bordered" id="doctors-table">
+            <!-- TODO: Search By ID -->
+            <div class="input-group mb-3" style="display: none;" id="idSearch">
+                <input type="number" class="form-control w-50" placeholder="Doctor ID"/>
+                <button class="btn btn-primary" id="searchButton">Search</button>
+            </div>
+
+            <!-- Global Search Bar -->
+            <div class="input-group mb-3" style="display: none;" id="genSearch">
+                <input type="text" class="form-control w-50" placeholder="Any Text" />
+                <button class="btn btn-primary" id="searchButton">Search</button>
+            </div>
+
+            <!-- Doctor Table -->
+            <table class="table table-striped table-bordered mt-10" id="doctors-table">
                 <thead>
                     <tr>
                         <th scope="col">Name</th>
@@ -53,7 +78,7 @@
                     </tr>
                 </thead>
                 <tbody id="doctors-table-body">
-                    <tr>
+                    <!-- <tr>
                         <td>Dr. Olivia White</td>
                         <td>Pediatric Dentist</td>
                         <td>olivia.white@example.com</td>
@@ -62,13 +87,12 @@
                         <td>
                             <div>
                                 <button class="btn btn-outline-warning btn-sm" type="button">
-                                    <!-- TODO: Add edit icon -->
                                     Edit
                                 </button>
                             </div>
                         </td>
-                    </tr>
-                    <tr>
+                    </tr> -->
+                    <!-- <tr>
                         <td>Dr. Benjamin Clark</td>
                         <td>Prosthodontist</td>
                         <td>benjamin.clark@example.com</td>
@@ -81,12 +105,12 @@
                                 </button>
                             </div>
                         </td>
-                    </tr>
+                    </tr> -->
                 </tbody>
             </table>
 
             <!-- Add Doctor Button -->
-            <div class="text-center">
+            <div class="text-center mb-5">
                 <button class="btn btn-primary" onclick="showDoctorForm()">
                     <!-- TODO: Add + icon instead of add -->
                     Add new doctor
