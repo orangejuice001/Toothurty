@@ -1,34 +1,43 @@
-async function getDoctors(doctorsTable) {
+/**
+ * API call to endpoint /doctors
+ * Gives list of all doctors in database
+ * @returns JSON
+ */
+async function getDoctors() {
     const response = await fetch("http://localhost:3000/doctors/"); // response
-    const doctors = await response.json(); //
-
-    for (const key in doctors) {
-        if (Object.hasOwnProperty.call(doctors, key)) {
-            const doctor = doctors[key];
-
-            const row = document.createElement("tr"); // making a <tr> in js
-
-            for (const field in doctor) {
-                if (Object.hasOwnProperty.call(doctor, field)) {
-                    const value = doctor[field];
-
-                    const td = document.createElement("td"); //
-                    td.innerHTML = value;
-
-                    row.appendChild(td);
-                }
-            }
-            const editTd = document.createElement("td");
-            const editDiv = document.createElement('div');
-            const editButton = document.createElement('button');
-            editButton.classList = ["btn", "btn-outline-warning", "btn-sm"];
-            editButton.innerHTML = "Edit";
-            editDiv.appendChild(editButton);
-            editTd.appendChild(editDiv)
-
-            row.appendChild(editTd)
-
-            doctorsTable.appendChild(row);
-        }
-    }
+    const doctors = await response.json();
+    return doctors
 }
+
+/**
+ * API call to endpoint /doctors/{doctorid}
+ * @param {integer} inputDocId - Doctor ID
+ * @returns JSON/null
+ */
+async function getDoctorById(inputDocId) {
+    const response = await fetch(`http://localhost:3000/doctors/${inputDocId}`) // Doctor Information based on ID
+
+    if (response.ok) {
+        const docInfo = await response.json();
+        return docInfo
+    }
+
+    return null;
+}
+
+/**
+ * Gives
+ * @param {string} inputGenText 
+ * @returns JSON/null
+ */
+async function getDoctorsByText(inputGenText) {
+    const response = await fetch(`http://localhost:3000/doctors/search?q=${inputGenText}`); // Query text
+
+    if (response.ok) {
+        const doctors = await response.json
+        return doctors
+    }
+
+    return null
+}
+

@@ -1,26 +1,27 @@
 // Element References
 const doctorsContainer = document.getElementById("doctors-container");
 const appointmentsContainer = document.getElementById("appointments-container");
-const idSearchBar = document.getElementById("idSearch");
-const genSearchBar = document.getElementById("genSearch");
 
 // Default tab status
 doctorsContainer.style.display = "block";
 appointmentsContainer.style.display = "none";
 
-// Get doctors table
-const doctorsTable = document.getElementById("doctors-table-body");
-getDoctors(doctorsTable)
+// Search Element References:
+const idSearchBar = document.getElementById("idSearch");
+const genSearchBar = document.getElementById("genSearch");
 
-function searchByID() {
+const generalTextElement = document.getElementById("genSearchInputField")
+
+function selectSearchByID() {
     idSearchBar.style.display = "block";
     genSearchBar.style.display = "none";
 }
 
-function generalSearch() {
+function selectGeneralSearch() {
     idSearchBar.style.display = "none";
     genSearchBar.style.display = "block";
 }
+
 
 function switchToDoctors() {
     doctorsContainer.style.display = "block";

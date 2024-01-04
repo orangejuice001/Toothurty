@@ -43,6 +43,8 @@ doctorRouter.get("/search", (req, res) => {
             }
         }
     }
+
+
     if (searchResults.length > 0) {
         res.send(searchResults);
     } else {
@@ -52,7 +54,25 @@ doctorRouter.get("/search", (req, res) => {
 
 // Gives Doctor information based on doctor id
 doctorRouter.get("/:doctorId", (req, res) => {
-    res.send(doctors[req.params.doctorId]);
+    const inputDocId = req.params.doctorId;
+    let result = []
+    let found = false;
+    for (const key in doctors) {
+        if (Object.hasOwnProperty.call(doctors, key)) {
+            const doctor = doctors[key];
+            
+            if (key === inputDocId) {
+                found = true;
+                result.push(doctor);
+                break;
+            }
+        }
+    }
+    if (result.length > 0) {
+        res.send(result)
+    } else {
+        res.status(404).send("No results found")
+    }
 });
 
 //Shows appointments only for a particular doctor
