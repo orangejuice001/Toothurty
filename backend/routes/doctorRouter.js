@@ -55,24 +55,23 @@ doctorRouter.get("/search", (req, res) => {
 // Gives Doctor information based on doctor id
 doctorRouter.get("/:doctorId", (req, res) => {
     const inputDocId = req.params.doctorId;
-    let result = []
-    let found = false;
+    
     for (const key in doctors) {
         if (Object.hasOwnProperty.call(doctors, key)) {
             const doctor = doctors[key];
-            
+
             if (key === inputDocId) {
-                found = true;
-                result.push(doctor);
-                break;
+                // Found the doctor
+                // sent the doctor
+                res.send(doctor);
+                return;
             }
         }
     }
-    if (result.length > 0) {
-        res.send(result)
-    } else {
-        res.status(404).send("No results found")
-    }
+
+    // Doctor not found and sent == no doctor with that id exists == 404
+    res.status(404).send("No results found")
+
 });
 
 //Shows appointments only for a particular doctor
@@ -91,7 +90,7 @@ doctorRouter.get("/:doctorId/appointments", (req, res) => {
             res.status(404).send("No appointments found for this doctor");
         }
     } else {
-        res.send("Doctor not found");
+        res.status(404).send("Doctor not found");
     }
 });
 

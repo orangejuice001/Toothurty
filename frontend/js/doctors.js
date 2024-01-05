@@ -1,44 +1,99 @@
-// Get doctors table
-const doctorsTable = document.getElementById("doctors-table-body");
-const docIdElement = document.getElementById("docIdInputField");
+// EVERYTHING THAT GOES ON INSIDE THE DOCTORS CONTAINER
 
-const doctors = getDoctors(doctorsTable)
+const searchDoctorBar = document.getElementById('search-doctor-bar');
 
-for (const key in doctors) {
-    if (Object.hasOwnProperty.call(doctors, key)) {
-        const doctor = doctors[key];
+let searchType = "ID";
 
-        const row = document.createElement("tr"); // making a <tr> in js
+const searchTypeText = document.getElementById('search-type');
+const searchDoctorDropdown = document.getElementById('search-doctor-dropdown');
 
-        for (const field in doctor) {
-            if (Object.hasOwnProperty.call(doctor, field)) {
-                const value = doctor[field];
+searchTypeText.innerHTML = searchType;
 
-                const td = document.createElement("td"); //
-                td.innerHTML = value;
+function switchToID() {
+    searchType = "ID";
+    searchTypeText.innerHTML = searchType;
 
-                row.appendChild(td);
-            }
-        }
-        const editTd = document.createElement("td");
-        const editDiv = document.createElement('div');
-        const editButton = document.createElement('button');
-        editButton.classList = ["btn", "btn-outline-warning", "btn-sm"];
-        editButton.innerHTML = "Edit";
-        editDiv.appendChild(editButton);
-        editTd.appendChild(editDiv)
+    const dropdownButtons = searchDoctorDropdown.getElementsByClassName('dropdown-item');
+    dropdownButtons[0].classList.add('active');
+    dropdownButtons[1].classList.remove('active');
+}
 
-        row.appendChild(editTd)
+function switchToText() {
+    searchType = "Text";
+    searchTypeText.innerHTML = searchType;
 
-        doctorsTable.appendChild(row);
+    const dropdownButtons = searchDoctorDropdown.getElementsByClassName('dropdown-item');
+    dropdownButtons[0].classList.remove('active');
+    dropdownButtons[1].classList.add('active');
+}
+
+function searchDoctor() {
+    if (searchType == "ID") {
+        searchDoctorByID()
+    } else {
+        searchDoctorByText();
     }
 }
 
 
-function searchByID() {
+// Doctor Table References:
+const doctorsTable = document.getElementById("doctors-table-body");
+const docIdElement = document.getElementById("docIdInputField");
+
+
+showAllDocs();
+
+
+
+
+function showDoctorForm() {
+    document.getElementById("docFormContainer").style.display = "block";
+}
+
+
+
+async function showAllDocs() {
+    const doctors = await getDoctors(doctorsTable)
+    console.log(doctors);
+
+    for (const key in doctors) {
+        if (Object.hasOwnProperty.call(doctors, key)) {
+            const doctor = doctors[key];
+
+            const row = document.createElement("tr"); // making a <tr> in js
+
+            for (const field in doctor) {
+                if (Object.hasOwnProperty.call(doctor, field)) {
+                    const value = doctor[field];
+
+                    const td = document.createElement("td"); //
+                    td.innerHTML = value;
+
+                    row.appendChild(td);
+                }
+            }
+            const editTd = document.createElement("td");
+            const editDiv = document.createElement('div');
+            const editButton = document.createElement('button');
+            editButton.classList = ["btn", "btn-outline-warning", "btn-sm"];
+            editButton.innerHTML = "Edit";
+            editDiv.appendChild(editButton);
+            editTd.appendChild(editDiv)
+
+            row.appendChild(editTd)
+
+            doctorsTable.appendChild(row);
+        }
+    }
+
+    document.getElementById("doctors-table").style.display = "block";
+}
+
+
+async function searchDoctorByID() {
     // TODO: Search By DOC ID
-    const docIdValue = docIdElement.value;
-    const doctor = getDoctorById(docIdValue)
+    const docIdValue = searchDoctorBar.value;
+    const doctor = await getDoctorById(docIdValue)
 
     doctorsTable.innerHTML = ""; // empty the doctor table <tbody>
 
@@ -50,7 +105,7 @@ function searchByID() {
 
             const td = document.createElement("td"); //
             td.innerHTML = data;
-            
+
             newRow.appendChild(td);
         }
     }
@@ -71,22 +126,64 @@ function searchByID() {
     doctorsTable.appendChild(newRow)
 }
 
-function generalSearch() {
-    const genTextValue = generalTextElement.value;
+async function searchDoctorByText() {
+    const genTextValue = searchDoctorBar.value;
     // TODO: General Search
-    
-    
-    const doctors = getDoctorsByText()
+    const doctors = await getDoctorsByText(genTextValue)
     doctorsTable.innerHTML = "";
-
-    if (doctors == null) {
+    
+    // Doctors not found
+    if (doctors === null) {
+        console.log("Doctor not found");
         // in the table, just append a <p> that says "No doctor found"
         let errMss = document.createElement('p');
-        errMss.innerHTML = "gfjdfg"
+        errMss.innerHTML = "No Doctor Found"
         doctorsTable.appendChild(errMss)
 
         return
     }
+    else {
+        console.log("Doctors found");
+        console.log(doctors);
+        // Doctor(s) found, Loop through list of doctors
+        for (const key in doctors) {
+            if (Object.hasOwnProperty.call(doctors, key)) {
+                const doctor = doctors[key];
 
-    
+                const row = document.createElement("tr"); // making a <tr> in js
+
+                for (const field in doctor) {
+                    if (Object.hasOwnProperty.call(doctor, field)) {
+                        const value = doctor[field];
+
+                        const td = document.createElement("td"); //
+                        td.innerHTML = value;
+
+                        row.appendChild(td);
+                    }
+                }
+                const editTd = document.createElement("td");
+                const editDiv = document.createElement('div');
+                const editButton = document.createElement('button');
+                editButton.classList = ["btn", "btn-outline-warning", "btn-sm"];
+                editButton.innerHTML = "Edit";
+                editDiv.appendChild(editButton);
+                editTd.appendChild(editDiv)
+
+                row.appendChild(editTd)
+
+                doctorsTable.appendChild(row);
+            }
+        }
+
+    }
+}
+
+function getAppointmentsWithID() {
+    // TODO: 
+}
+
+function getAllAppointments() {
+    // TODO:
+
 }
