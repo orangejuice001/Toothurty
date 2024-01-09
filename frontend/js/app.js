@@ -24,4 +24,5 @@ function switchToAppointments() {
     const navbarLinks = document.getElementsByClassName("nav-link");
     navbarLinks[0].classList.remove("active");
     navbarLinks[1].classList.add("active");
+
 }

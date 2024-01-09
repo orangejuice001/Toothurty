@@ -42,7 +42,8 @@
             <!-- TODO: Search Dropdown -->
             <div class="input-group">
                 <input type="text" class="form-control" placeholder="Search" id="search-doctor-bar">
-                <button type="button" class="btn btn-outline-secondary" onclick="searchDoctor()">Search with <span id="search-type"></span></button>
+                <button type="button" class="btn btn-outline-secondary" onclick="searchDoctor()">Search with <span
+                        id="search-type"></span></button>
                 <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split"
                     data-bs-toggle="dropdown">
                     <span class="visually-hidden">Toggle Dropdown</span>
@@ -215,6 +216,23 @@
                 </tbody>
             </table>
 
+            <!-- All appointments -->
+            <div class="mb-3">
+                <button class="btn btn-primary" id="all-appointments-button" onclick="showAllAppts()">See all Appointments</button>
+            </div>
+            <div class="mt-3">
+                <table class="table table-bordered table-striped mt-2" id="appointment-table" style="display: none;">
+                    <thead>
+                        <tr>
+                            <th class="col">Doctor ID</th>
+                            <th class="col">Date</th>
+                            <th class="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="appointment-table-body"></tbody>
+                </table>
+            </div>
+
             <!-- TODO: Appointment Form -->
         </div>
     </div>
@@ -227,6 +245,7 @@
     <!-- JS -->
     <script src="js/api.js"></script>
     <script src="js/doctors.js"></script>
+    <script src="js/appts.js"></script>
     <script src="js/app.js"></script>
 </body>
 

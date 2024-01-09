@@ -53,8 +53,7 @@ function showDoctorForm() {
 
 
 async function showAllDocs() {
-    const doctors = await getDoctors(doctorsTable)
-    console.log(doctors);
+    const doctors = await getDoctors()
 
     for (const key in doctors) {
         if (Object.hasOwnProperty.call(doctors, key)) {
@@ -177,13 +176,4 @@ async function searchDoctorByText() {
         }
 
     }
-}
-
-function getAppointmentsWithID() {
-    // TODO: 
-}
-
-function getAllAppointments() {
-    // TODO:
-
 }

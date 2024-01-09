@@ -66,6 +66,6 @@ async function getAppointmentsWithDocID(inputDocId){
  */
 async function getAllAppointments(){
     const response = await fetch(`http://localhost:3000/appointments`)
-    const appts = response.json
+    const appts = response.json();
     return appts
 }
